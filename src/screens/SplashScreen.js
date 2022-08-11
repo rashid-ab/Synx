@@ -9,7 +9,7 @@ function App({ navigation }) {
       const timer = setTimeout(() => navigation.replace('Login'), 3000);
     }, []);
   return (
-    <Image source={require('../assets/splash.png')} style={{width:windowWidth,height:windowHeight}} />
+    <Image source={require('../assets/splash.jpeg')} style={{width:windowWidth,height:windowHeight}} />
   );
 }
 

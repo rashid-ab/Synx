@@ -1,13 +1,15 @@
 /* eslint-disable prettier/prettier */
 import React, { Component } from 'react';
-import { Text, View,useDarkMode } from 'react-native';
+import { useColorScheme } from 'react-native';
 import { createStore } from 'redux';
 import {COLORMODE,USER,UPDATE_TOKEN} from './type'
+// const darkmode = useColorScheme();
+// console.log(darkmode);
 const initialState = {
   name: '',
   auth_token: '',
   user: "",
-  colorMode: useDarkMode(),
+  colorMode:  '',
 };
 
 const reducer = (state = initialState, action) => {

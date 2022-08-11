@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { TouchableOpacity, StyleSheet, View,Text,Image,TextInput } from 'react-native'
+import { TouchableOpacity, StyleSheet, View,Text,Image,TextInput,KeyboardAvoidingView,ScrollView } from 'react-native'
 import BackButton from '../components/BackButton'
 import Background from '../components/Background'
 import { emailValidator } from '../helpers/emailValidator'
@@ -8,7 +8,7 @@ import { nameValidator } from '../helpers/nameValidator'
 import { Checkbox } from 'react-native-paper';
 import Colors from '../components/colors'
 import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
-export default function LoginScreen({ navigation }) {
+export default function Signup({ navigation }) {
   const [name, setName] = useState({ value: '', error: '' })
   const [email, setEmail] = useState({ value: '', error: '' })
   const [password, setPassword] = useState({ value: '', error: '' })
@@ -31,17 +31,33 @@ export default function LoginScreen({ navigation }) {
 
 
   return (
-    <Background>
+    <KeyboardAvoidingView style={styles.container} behavior="height">
+    <ScrollView>
       <BackButton goBack={navigation.goBack} />
         <View style={{flex:.25,alignItems: 'center'}}>
             <Image source={require('../assets/headerimage.png')} style={styles.image} />
         </View>
         <View style={{flex:.75,alignSelf: 'center',alignItems: 'center',width:'100%'}}>
-            <Text style={{color:Colors['dark'].text,marginVertical:20,fontSize:hp('3%')}}>Sign In to your Account</Text>
+            <Text style={{color:Colors['dark'].text,marginVertical:20,fontSize:hp('3%')}}>Create new Account</Text>
+        <View style={styles.inputcontainer}>
+            <Text style={styles.label}>Name</Text>
+            <TextInput
+                placeholder="Name"
+                returnKeyType="next"
+                placeholderColor='#8B90A8'
+                style={styles.Input}
+                value={name.value}
+                onChangeText={(text) => setName({ value: text, error: '' })}
+                error={!!name.error}
+                errorText={name.error}
+                autoCapitalize="none"
+                autoCompleteType="email"
+            />
+        </View>
         <View style={styles.inputcontainer}>
             <Text style={styles.label}>Email address</Text>
             <TextInput
-                placeholder="Email"
+                placeholder="example@gmail.com"
                 returnKeyType="next"
                 placeholderColor='#8B90A8'
                 style={styles.Input}
@@ -81,9 +97,9 @@ export default function LoginScreen({ navigation }) {
                 />
                 <Text style={{fontSize:hp('1.5%'),color:'#673778'}}>Remember me?</Text>
             </View>
-            <TouchableOpacity>
+            {/* <TouchableOpacity>
                 <Text style={{fontSize:hp('1.5%'),color:'#673778',textDecorationLine: 'underline'}}>Forgot Password?</Text>
-            </TouchableOpacity>
+            </TouchableOpacity> */}
         </View>
         <View style={{flexDirection: 'row', alignItems: 'center'}}>
             <View style={{flex: 1, height: 1, backgroundColor: '#4B3656'}} />
@@ -103,7 +119,8 @@ export default function LoginScreen({ navigation }) {
         </TouchableOpacity>
       </View>
       </View>
-    </Background>
+    </ScrollView>
+    </KeyboardAvoidingView>
   )
 }
 
@@ -112,6 +129,12 @@ const styles = StyleSheet.create({
     width: '100%',
     alignItems: 'flex-end',
     marginBottom: 24,
+  },
+  container: {
+    flex: 1,
+    padding: 20,
+    width: '100%',
+    backgroundColor: Colors['dark'].background,
   },
   loginbtn:{
     width:'100%',

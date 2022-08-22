@@ -1,32 +1,53 @@
 import React, { useState } from 'react'
-import { TouchableOpacity, StyleSheet, View,Text,Image,TextInput,KeyboardAvoidingView,ScrollView } from 'react-native'
+import { TouchableOpacity,ActivityIndicator, StyleSheet, View,Text,Image,TextInput,KeyboardAvoidingView,ScrollView } from 'react-native'
 import BackButton from '../components/BackButton'
-import Background from '../components/Background'
 import { emailValidator } from '../helpers/emailValidator'
 import { passwordValidator } from '../helpers/passwordValidator'
 import { nameValidator } from '../helpers/nameValidator'
 import { Checkbox } from 'react-native-paper';
+import {AlertMessage} from '../components/alert'
+import URL from '../components/url'
+import axios from 'axios'
 import Colors from '../components/colors'
 import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 export default function Signup({ navigation }) {
-  const [name, setName] = useState({ value: '', error: '' })
+  // const [name, setName] = useState({ value: '', error: '' })
   const [email, setEmail] = useState({ value: '', error: '' })
   const [password, setPassword] = useState({ value: '', error: '' })
   const [checked, setChecked] = React.useState(false);
+  const [loader, setLoader] = React.useState(false);
   const onSignUpPressed = () => {
-    const nameError = nameValidator(name.value)
+    // const nameError = nameValidator(name.value)
     const emailError = emailValidator(email.value)
     const passwordError = passwordValidator(password.value)
-    if (emailError || passwordError || nameError) {
-      setName({ ...name, error: nameError })
+    if (emailError || passwordError ) {
+      // setName({ ...name, error: nameError })
       setEmail({ ...email, error: emailError })
       setPassword({ ...password, error: passwordError })
       return
     }
-    navigation.reset({
-      index: 0,
-      routes: [{ name: 'Dashboard' }],
-    })
+    else{
+      if(loader){
+        return;
+      }
+      else{
+        setLoader(true)
+        console.log('aaa',email.value)
+        console.log('aaa',password.value)
+        axios.post(URL+'auth/signup', {
+        "email": email.value,
+        // "name": name,
+        "password": password.value
+      })
+        .then(function (response) {
+          navigation.navigate('login')
+          setLoader(false)
+        })
+        .catch(function (error) {
+          AlertMessage('Error',error.message,'red')
+          setLoader(false)
+        });}
+    }
   }
 
 
@@ -39,7 +60,7 @@ export default function Signup({ navigation }) {
         </View>
         <View style={{flex:.75,alignSelf: 'center',alignItems: 'center',width:'100%'}}>
             <Text style={{color:Colors['dark'].text,marginVertical:20,fontSize:hp('3%')}}>Create new Account</Text>
-        <View style={styles.inputcontainer}>
+        {/* <View style={styles.inputcontainer}>
             <Text style={styles.label}>Name</Text>
             <TextInput
                 placeholder="Name"
@@ -53,7 +74,8 @@ export default function Signup({ navigation }) {
                 autoCapitalize="none"
                 autoCompleteType="email"
             />
-        </View>
+            <Text style={{color:'red'}}>{name.error}</Text>
+        </View> */}
         <View style={styles.inputcontainer}>
             <Text style={styles.label}>Email address</Text>
             <TextInput
@@ -70,6 +92,7 @@ export default function Signup({ navigation }) {
                 textContentType="emailAddress"
                 keyboardType="email-address"
             />
+            <Text style={{color:'red'}}>{email.error}</Text>
         </View>
         <View style={styles.inputcontainer}>
         <Text style={styles.label}>Passsword</Text>
@@ -84,6 +107,7 @@ export default function Signup({ navigation }) {
             errorText={password.error}
             secureTextEntry
         />
+        <Text style={{color:'red'}}>{password.error}</Text>
         </View>
         <View style={{width:'100%',flexDirection:'row',alignItems:'center',justifyContent:'space-between'}}>
             <View style={{flexDirection:'row',alignItems:'center'}}>
@@ -110,7 +134,8 @@ export default function Signup({ navigation }) {
         </View>
         <Text style={{marginVertical:10,color:Colors['dark'].text}}>Signup with</Text>
       <TouchableOpacity style={styles.loginbtn} onPress={onSignUpPressed}>
-        <Text style={{color:Colors['dark'].text}}>Signup</Text>
+        {loader?<ActivityIndicator size="small" color="white" />:
+          <Text style={{color:Colors['dark'].text}}>SignUp</Text>}
       </TouchableOpacity>
       <View style={styles.row}>
         <Text style={{color:Colors['dark'].text,marginVertical:5}}>Already have an account? </Text>

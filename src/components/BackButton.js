@@ -14,7 +14,14 @@ export default function BackButton({ goBack,title }) {
         />
       </TouchableOpacity>
       <Text style={{fontSize:18,color:Colors['dark'].text}}>{title}</Text>
-      <View></View>
+      {title?<TouchableOpacity onPress={goBack}>
+        <Icon
+          name='bell'
+          type='evilicon'
+          size={30}
+          color={Colors['dark'].text}
+        />
+      </TouchableOpacity>:<View></View>}
     </View>
   )
 }

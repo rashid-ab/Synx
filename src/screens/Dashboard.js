@@ -1,120 +1,78 @@
 import React, { useState } from 'react'
-import { TouchableOpacity, StyleSheet, View,Text,Image,TextInput } from 'react-native'
-import BackButton from '../components/BackButton'
-import Background from '../components/Background'
-import { emailValidator } from '../helpers/emailValidator'
-import { passwordValidator } from '../helpers/passwordValidator'
-import { Checkbox } from 'react-native-paper';
+import { TouchableOpacity, StyleSheet, View,Text,Image,TextInput,KeyboardAvoidingView,ScrollView } from 'react-native'
+import {Icon}  from 'react-native-elements'
 import Colors from '../components/colors'
+import SwitchToggle from "react-native-switch-toggle";
 import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
-export default function LoginScreen({ navigation }) {
-  const [email, setEmail] = useState({ value: '', error: '' })
-  const [password, setPassword] = useState({ value: '', error: '' })
-  const [checked, setChecked] = React.useState(false);
-  const onLoginPressed = () => {
-    const emailError = emailValidator(email.value)
-    const passwordError = passwordValidator(password.value)
-    if (emailError || passwordError) {
-      setEmail({ ...email, error: emailError })
-      setPassword({ ...password, error: passwordError })
-      return
-    }
-    navigation.reset({
-      index: 0,
-      routes: [{ name: 'Dashboard' }],
-    })
-  }
+export default function Dashboard({ navigation }) {
 
+  const [on, setON] = React.useState(true);
+ 
   return (
-    <Background>
-      {/* <BackButton goBack={navigation.goBack} /> */}
-        <View style={{flex:.25,alignItems: 'center'}}>
-            <Image source={require('../assets/headerimage.png')} style={styles.image} />
-        </View>
-        <View style={{flex:.75,alignSelf: 'center',alignItems: 'center',width:'100%'}}>
-            <Text style={{color:Colors['dark'].text,marginVertical:20,fontSize:hp('3%')}}>Sign In to your Account</Text>
-        <View style={styles.inputcontainer}>
-            <Text style={styles.label}>Email address</Text>
-            <TextInput
-                placeholder="Email"
-                returnKeyType="next"
-                placeholderColor='#8B90A8'
-                style={styles.Input}
-                value={email.value}
-                onChangeText={(text) => setEmail({ value: text, error: '' })}
-                error={!!email.error}
-                errorText={email.error}
-                autoCapitalize="none"
-                autoCompleteType="email"
-                textContentType="emailAddress"
-                keyboardType="email-address"
-            />
-        </View>
-        <View style={styles.inputcontainer}>
-        <Text style={styles.label}>Passsword</Text>
-        <TextInput
-            placeholder="Password"
-            placeholderColor='#8B90A8'
-            returnKeyType="done"
-            style={styles.Input}
-            value={password.value}
-            onChangeText={(text) => setPassword({ value: text, error: '' })}
-            error={!!password.error}
-            errorText={password.error}
-            secureTextEntry
+    <View style={styles.container} >
+        <View style={{flexDirection:'row',justifyContent:'space-between'}}>
+        <View></View>
+      <Text style={{fontSize:18,color:Colors['dark'].text}}>Dashboard</Text>
+      <TouchableOpacity>
+        <Icon
+          name='bell'
+          type='evilicon'
+          size={30}
+          color={Colors['dark'].text}
         />
-        </View>
-        <View style={{width:'100%',flexDirection:'row',alignItems:'center',justifyContent:'space-between'}}>
-            <View style={{flexDirection:'row',alignItems:'center'}}>
-                <Checkbox
-                    status={checked ? 'checked' : 'unchecked'}
-                    color='#696a80'
-                    uncheckedColor='#696a80'
-                    onPress={() => {
-                        setChecked(!checked);
-                    }}
-                />
-                <Text style={{fontSize:hp('1.5%'),color:'#673778'}}>Remember me?</Text>
-            </View>
-            <TouchableOpacity>
-                <Text style={{fontSize:hp('1.5%'),color:'#673778',textDecorationLine: 'underline'}}>Forgot Password?</Text>
-            </TouchableOpacity>
-        </View>
-        <View style={{flexDirection: 'row', alignItems: 'center'}}>
-            <View style={{flex: 1, height: 1, backgroundColor: '#4B3656'}} />
-            <View>
-                <Text style={{width: hp('3%'), textAlign: 'center',color:Colors['dark'].text}}>Or</Text>
-            </View>
-            <View style={{flex: 1, height: 1, backgroundColor: '#4B3656'}} />
-        </View>
-        <Text style={{marginVertical:10,color:Colors['dark'].text}}>Login with</Text>
-      <TouchableOpacity style={styles.loginbtn} onPress={onLoginPressed}>
-        <Text style={{color:Colors['dark'].text}}>Login</Text>
       </TouchableOpacity>
-      <View style={styles.row}>
-        <Text style={{color:Colors['dark'].text,marginVertical:5}}>Don’t have an account? </Text>
-        <TouchableOpacity onPress={() => navigation.navigate('Signup')}>
-        <Text style={{fontSize:hp('1.5%'),color:'#673778',textDecorationLine: 'underline'}}>create new account</Text>
-        </TouchableOpacity>
-      </View>
-      </View>
-    </Background>
+    </View>
+        <View style={{flex:.8,paddingTop:40}}>
+            
+            <View style={styles.inputcontainer}>
+                <Text style={styles.label}>Synx</Text>
+            </View>
+            </View>
+    </View>
   )
 }
 
 const styles = StyleSheet.create({
-  forgotPassword: {
+  
+  container: {
+    flex: 1,
+    padding: 20,
     width: '100%',
-    alignItems: 'flex-end',
-    marginBottom: 24,
+    backgroundColor: Colors['dark'].background,
   },
-  loginbtn:{
+  
+  tabs:{
+    backgroundColor:'#322A3D',
+    padding:15,
+    width:'100%',
+    flexDirection:'row',
+    justifyContent:'space-between',
+    alignItem:'center',
+    marginVertical:5,
+    borderRadius:5
+  },
+  soundtabs:{
+    backgroundColor:'#322A3D',
+    padding:10,
     width:'100%',
     paddingVertical:15,
-    backgroundColor:'#804694',
-    alignItems: 'center',
-    borderRadius:5,
-    
+    flexDirection:'row',
+    justifyContent:'space-between',
+    alignItem:'center',
+    // marginVertical:5,
+    borderBottomWidth:.2,
+    borderBottomColor:'white',
+    borderRadius:5
+  },
+  soundtab:{
+    backgroundColor:'#322A3D',
+    padding:10,    
+    width:'100%',
+    flexDirection:'row',
+    justifyContent:'space-between',
+    alignItem:'center',
+    // marginVertical:5,
+    borderRadius:5
   },
   row: {
     marginTop: 4,
@@ -129,7 +87,8 @@ const styles = StyleSheet.create({
   },
   label:{
     color:Colors['dark'].text,
-    marginVertical:10
+    marginVertical:10,
+    fontWeight:'bold'
   },
   Input:{
     padding:10,

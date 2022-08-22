@@ -11,6 +11,8 @@ import Dashboard from '../screens/Dashboard'
 import Profile from '../screens/profile'
 import PI from '../screens/personalinfo'
 import SoundSecurity from '../screens/soundsecurity'
+import Notifications from '../screens/notifications'
+import Vault1 from '../screens/vault1'
 import Colors from '../components/colors'
 import {Icon}  from 'react-native-elements'
 import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
@@ -54,6 +56,8 @@ function App() {
         <Stack.Screen name="Signup" component={Signup} />
         <Stack.Screen name="PI" component={PI} />
         <Stack.Screen name="SoundSecurity" component={SoundSecurity} />
+        <Stack.Screen name="Notifications" component={Notifications} />
+        <Stack.Screen name="Vault1" component={Vault1} />
         <Stack.Screen name="Dashboard" component={TabsNavigator} />
       </Stack.Navigator>
     </NavigationContainer>

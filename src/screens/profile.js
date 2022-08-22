@@ -53,7 +53,7 @@ export default function Profile({ navigation }) {
                 <Text>Pricing</Text>
                 <Icon name='keyboard-arrow-right' type='material' size={hp('3%')} color='#804694' />
             </TouchableOpacity>
-            <TouchableOpacity style={styles.tabs}>
+            <TouchableOpacity onPress={()=>navigation.navigate('Vault1')} style={styles.tabs}>
                 <Text>Notifications</Text>
                 <Icon name='keyboard-arrow-right' type='material' size={hp('3%')} color='#804694' />
             </TouchableOpacity>

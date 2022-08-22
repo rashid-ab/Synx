@@ -16,21 +16,7 @@ export default function LoginScreen({ navigation }) {
   const [phone, setPhone] = useState({ value: '', error: '' })
   const [on, setON] = React.useState(true);
   const [password, setPassword] = useState({ value: '', error: '' })
-  const onSignUpPressed = () => {
-    const nameError = nameValidator(fname.value)
-    const passwordError = passwordValidator(password.value)
-    if (emailError || passwordError || nameError) {
-      setName({ ...name, error: nameError })
-      setEmail({ ...email, error: emailError })
-      setPassword({ ...password, error: passwordError })
-      return
-    }
-    navigation.reset({
-      index: 0,
-      routes: [{ name: 'Dashboard' }],
-    })
-  }
-
+ 
 
   return (
     <View style={styles.container} >

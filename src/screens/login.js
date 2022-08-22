@@ -1,32 +1,54 @@
 import React, { useState } from 'react'
-import { TouchableOpacity, StyleSheet, View,Text,Image,TextInput,KeyboardAvoidingView, ScrollView } from 'react-native'
+import { TouchableOpacity,ActivityIndicator, StyleSheet, View,Text,Image,TextInput,KeyboardAvoidingView, ScrollView } from 'react-native'
 import BackButton from '../components/BackButton'
 import Background from '../components/Background'
 import { emailValidator } from '../helpers/emailValidator'
 import { passwordValidator } from '../helpers/passwordValidator'
 import { Checkbox } from 'react-native-paper';
 import Colors from '../components/colors'
+import URL from '../components/url'
+import axios from 'axios'
+import {AlertMessage} from '../components/alert'
 import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 export default function LoginScreen({ navigation }) {
   const [email, setEmail] = useState({ value: '', error: '' })
   const [password, setPassword] = useState({ value: '', error: '' })
   const [checked, setChecked] = React.useState(false);
+  const [loader, setLoader] = React.useState(false);
   const onLoginPressed = () => {
-    console.log(navigation)
+    
     const emailError = emailValidator(email.value)
     const passwordError = passwordValidator(password.value)
-    if (emailError || passwordError) {
-      navigation.replace('Dashboard')
-      setEmail({ ...email, error: emailError })
-      setPassword({ ...password, error: passwordError })
-      return
-    }
-    else{alert('asdasd')}
-    navigation.reset({
-      index: 0,
-      routes: [{ name: 'Dashboard' }],
+    // if (emailError || passwordError) {
+    //   // navigation.replace('Dashboard')
+    //   console.log('aa',emailError)
+    //   console.log('aa',passwordError)
+    //   setEmail({ ...email, error: emailError })
+    //   setPassword({ ...password, error: passwordError })
+    //   return
+    // }
+    // else{
+      if(loader){
+        return;
+      }
+      else{let emails=email.value
+      let passwords=password.value
+      setLoader(true)
+      return navigation.replace('Dashboard')
+      axios.post(URL+'auth/signin', {
+        "email": emails,
+        "password": passwords
     })
-  }
+      .then(function (response) {
+        console.log(response.data);
+        setLoader(false)
+      })
+      .catch(function (error) {
+        AlertMessage('Error',error.message,'red')
+        setLoader(false)
+      });}
+  // }
+}
 
   return (
     // <Background>
@@ -53,6 +75,7 @@ export default function LoginScreen({ navigation }) {
                 textContentType="emailAddress"
                 keyboardType="email-address"
             />
+            <Text style={{color:'red'}}>{email.error}</Text>
         </View>
         <View style={styles.inputcontainer}>
         <Text style={styles.label}>Passsword</Text>
@@ -67,6 +90,7 @@ export default function LoginScreen({ navigation }) {
             errorText={password.error}
             secureTextEntry
         />
+        <Text style={{color:'red'}}>{password.error}</Text>
         </View>
         <View style={{width:'100%',flexDirection:'row',alignItems:'center',justifyContent:'space-between'}}>
             <View style={{flexDirection:'row',alignItems:'center'}}>
@@ -93,7 +117,9 @@ export default function LoginScreen({ navigation }) {
         </View>
         <Text style={{marginVertical:10,color:Colors['dark'].text}}>Login with</Text>
       <TouchableOpacity style={styles.loginbtn} onPress={onLoginPressed}>
-        <Text style={{color:Colors['dark'].text}}>Login</Text>
+        {loader?<ActivityIndicator size="small" color="white" />:
+        <Text style={{color:Colors['dark'].text}}>Login</Text>}
+        
       </TouchableOpacity>
       <View style={styles.row}>
         <Text style={{color:Colors['dark'].text,marginVertical:5}}>Don’t have an account? </Text>

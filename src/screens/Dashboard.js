@@ -41,7 +41,7 @@ export default function Dashboard({ navigation }) {
     <ScrollView style={styles.container} >
         <View style={{flexDirection:'row',justifyContent:'space-between'}}>
         <View></View>
-      <Text style={{fontSize:18,color:Colors['dark'].text}}>Dashboard</Text>
+      <Text style={{fontSize:18,color:Colors['dark'].text,fontWeight:'bold'}}>Dashboard</Text>
       <TouchableOpacity>
         <Icon
           name='bell'
@@ -60,9 +60,9 @@ export default function Dashboard({ navigation }) {
                   <View style={{backgroundColor:'black',width:wp('12'),height:hp('6'),alignItems:'center',justifyContent:'center',borderRadius:50}}>
                     <Image source={require('../assets/Capture.png')}/>
                   </View>
-                  <Text style={{fontWeight:'bold',fontSize:hp('2.2'),marginTop:20}}>Synx Vault 1</Text>
+                  <Text style={{fontWeight:'bold',fontSize:hp('2.2'),marginTop:20,color:Colors['dark'].text}}>Synx Vault 1</Text>
                   <View style={{ marginTop:10}}>
-                    <LinearProgress color="primary" value={0.1} 
+                    <LinearProgress value={0.1} 
                       variant='determinate'
                       color='#824597'
                       trackColor='#4B3656'
@@ -74,7 +74,7 @@ export default function Dashboard({ navigation }) {
                     />
                   </View>
                   <View style={{flexDirection:'row',justifyContent:'space-between'}}>
-                    <Text style={{fontSize:hp('1.5')}}>1138 Files</Text>
+                    <Text style={{fontSize:hp('1.5'),color:Colors['dark'].text}}>1138 Files</Text>
                     <Text style={{fontSize:hp('1.5'),color:'#7E7A86'}}>50GB</Text>
                   </View>
               </View>
@@ -82,7 +82,7 @@ export default function Dashboard({ navigation }) {
                   <View style={{backgroundColor:'black',width:wp('12'),height:hp('6'),alignItems:'center',justifyContent:'center',borderRadius:50}}>
                     <Image source={require('../assets/Capture.png')} />
                   </View>
-                  <Text style={{fontWeight:'bold',fontSize:hp('2.2'),marginTop:20}}>Synx Vault 2</Text>
+                  <Text style={{fontWeight:'bold',fontSize:hp('2.2'),marginTop:20,color:Colors['dark'].text}}>Synx Vault 2</Text>
                   <View style={{ marginTop:10}}>
                     <LinearProgress color="primary" value={0.1} 
                       variant='determinate'
@@ -95,13 +95,13 @@ export default function Dashboard({ navigation }) {
                     />
                   </View>
                   <View style={{flexDirection:'row',justifyContent:'space-between'}}>
-                    <Text style={{fontSize:hp('1.5')}}>1138 Files</Text>
+                    <Text style={{fontSize:hp('1.5'),color:Colors['dark'].text}}>1138 Files</Text>
                     <Text style={{fontSize:hp('1.5'),color:'#7E7A86'}}>50GB</Text>
                   </View>
               </View>
             </View>
-            <Text style={{fontSize:hp('2.5'),fontWeight:'bold',marginVertical:10}}>Recent Files</Text>
-            <View style={{backgroundColor:'#322A3D',height:hp('40'),padding:10,borderRadius:10}}>
+            <Text style={{fontSize:hp('2.5'),fontWeight:'bold',marginVertical:10,color:Colors['dark'].text}}>Recent Files</Text>
+            <View style={{backgroundColor:'#322A3D',height:hp('40'),color:Colors['dark'].text,padding:10,borderRadius:10}}>
                 <View style={{flexDirection:'row',flex:1}}>
                       <View style={{flexDirection:'row',backgroundColor:'#190B20',height:hp('8'),alignItems:'center',justifyContent:'center',flex:.5,borderRadius:5}}>
                           <View style={{flexDirection:'row',backgroundColor:'#190B20',flex:.7,alignItems:'center',justifyContent:'center'}}>
@@ -109,12 +109,12 @@ export default function Dashboard({ navigation }) {
                               <Image style={{height:hp('4'),width:wp('7')}} source={require('../assets/file.png')} />
                             </View>
                             <View style={{flex:.6}}>
-                              <Text style={{fontSize:hp('1.5'),fontWeight:'bold'}}>Sounds File</Text>
+                              <Text style={{fontSize:hp('1.5'),fontWeight:'bold',color:Colors['dark'].text}}>Sounds File</Text>
                               <Text style={{fontSize:hp('1.3'),alignSelf:'center'}}>01-06-22</Text>
                             </View>
                           </View>
                           <View style={{flexDirection:'row',backgroundColor:'#190B20',flex:.3,alignItems:'center',justifyContent:'center',}}>
-                            <Text style={{fontSize:hp('1.4')}}>90MB</Text>
+                            <Text style={{fontSize:hp('1.4'),color:Colors['dark'].text}}>90MB</Text>
                           </View>
                       </View>
                       <View style={{flexDirection:'row',backgroundColor:'#190B20',height:hp('8'),alignItems:'center',justifyContent:'center',flex:.5,borderRadius:5,marginLeft:10}}>
@@ -123,12 +123,12 @@ export default function Dashboard({ navigation }) {
                               <Image style={{height:hp('4'),width:wp('7')}} source={require('../assets/file.png')} />
                             </View>
                             <View style={{flex:.6}}>
-                              <Text style={{fontSize:hp('1.5'),fontWeight:'bold'}}>Sounds File</Text>
+                              <Text style={{fontSize:hp('1.5'),fontWeight:'bold',color:Colors['dark'].text}}>Sounds File</Text>
                               <Text style={{fontSize:hp('1.3'),alignSelf:'center'}}>01-06-22</Text>
                             </View>
                           </View>
                           <View style={{flexDirection:'row',backgroundColor:'#190B20',flex:.3,alignItems:'center',justifyContent:'center',}}>
-                            <Text style={{fontSize:hp('1.4')}}>90MB</Text>
+                            <Text style={{fontSize:hp('1.4'),color:Colors['dark'].text}}>90MB</Text>
                           </View>
                       </View>
                 </View>
@@ -139,12 +139,12 @@ export default function Dashboard({ navigation }) {
                               <Image style={{height:hp('4'),width:wp('7')}} source={require('../assets/file.png')} />
                             </View>
                             <View style={{flex:.6}}>
-                              <Text style={{fontSize:hp('1.5'),fontWeight:'bold'}}>Sounds File</Text>
+                              <Text style={{fontSize:hp('1.5'),fontWeight:'bold',color:Colors['dark'].text}}>Sounds File</Text>
                               <Text style={{fontSize:hp('1.3'),alignSelf:'center'}}>01-06-22</Text>
                             </View>
                           </View>
                           <View style={{flexDirection:'row',backgroundColor:'#190B20',flex:.3,alignItems:'center',justifyContent:'center',}}>
-                            <Text style={{fontSize:hp('1.4')}}>90MB</Text>
+                            <Text style={{fontSize:hp('1.4'),color:Colors['dark'].text}}>90MB</Text>
                           </View>
                       </View>
                       <View style={{flexDirection:'row',backgroundColor:'#190B20',height:hp('8'),alignItems:'center',justifyContent:'center',flex:.5,borderRadius:5,marginLeft:10}}>
@@ -153,12 +153,12 @@ export default function Dashboard({ navigation }) {
                               <Image style={{height:hp('4'),width:wp('7')}} source={require('../assets/file.png')} />
                             </View>
                             <View style={{flex:.6}}>
-                              <Text style={{fontSize:hp('1.5'),fontWeight:'bold'}}>Sounds File</Text>
+                              <Text style={{fontSize:hp('1.5'),fontWeight:'bold',color:Colors['dark'].text}}>Sounds File</Text>
                               <Text style={{fontSize:hp('1.3'),alignSelf:'center'}}>01-06-22</Text>
                             </View>
                           </View>
                           <View style={{flexDirection:'row',backgroundColor:'#190B20',flex:.3,alignItems:'center',justifyContent:'center',}}>
-                            <Text style={{fontSize:hp('1.4')}}>90MB</Text>
+                            <Text style={{fontSize:hp('1.4'),color:Colors['dark'].text}}>90MB</Text>
                           </View>
                       </View>
                 </View>
@@ -169,12 +169,12 @@ export default function Dashboard({ navigation }) {
                               <Image style={{height:hp('4'),width:wp('7')}} source={require('../assets/file.png')} />
                             </View>
                             <View style={{flex:.6}}>
-                              <Text style={{fontSize:hp('1.5'),fontWeight:'bold'}}>Sounds File</Text>
+                              <Text style={{fontSize:hp('1.5'),fontWeight:'bold',color:Colors['dark'].text}}>Sounds File</Text>
                               <Text style={{fontSize:hp('1.3'),alignSelf:'center'}}>01-06-22</Text>
                             </View>
                           </View>
                           <View style={{flexDirection:'row',backgroundColor:'#190B20',flex:.3,alignItems:'center',justifyContent:'center',}}>
-                            <Text style={{fontSize:hp('1.4')}}>90MB</Text>
+                            <Text style={{fontSize:hp('1.4'),color:Colors['dark'].text}}>90MB</Text>
                           </View>
                       </View>
                       <View style={{flexDirection:'row',backgroundColor:'#190B20',height:hp('8'),alignItems:'center',justifyContent:'center',flex:.5,borderRadius:5,marginLeft:10}}>
@@ -183,12 +183,12 @@ export default function Dashboard({ navigation }) {
                               <Image style={{height:hp('4'),width:wp('7')}} source={require('../assets/file.png')} />
                             </View>
                             <View style={{flex:.6}}>
-                              <Text style={{fontSize:hp('1.5'),fontWeight:'bold'}}>Sounds File</Text>
+                              <Text style={{fontSize:hp('1.5'),fontWeight:'bold',color:Colors['dark'].text}}>Sounds File</Text>
                               <Text style={{fontSize:hp('1.3'),alignSelf:'center'}}>01-06-22</Text>
                             </View>
                           </View>
                           <View style={{flexDirection:'row',backgroundColor:'#190B20',flex:.3,alignItems:'center',justifyContent:'center',}}>
-                            <Text style={{fontSize:hp('1.4')}}>90MB</Text>
+                            <Text style={{fontSize:hp('1.4'),color:Colors['dark'].text}}>90MB</Text>
                           </View>
                       </View>
                 </View>
@@ -199,18 +199,18 @@ export default function Dashboard({ navigation }) {
                               <Image style={{height:hp('4'),width:wp('7')}} source={require('../assets/file.png')} />
                             </View>
                             <View style={{flex:.6}}>
-                              <Text style={{fontSize:hp('1.5'),fontWeight:'bold'}}>Sounds File</Text>
+                              <Text style={{fontSize:hp('1.5'),fontWeight:'bold',color:Colors['dark'].text}}>Sounds File</Text>
                               <Text style={{fontSize:hp('1.3'),alignSelf:'center'}}>01-06-22</Text>
                             </View>
                           </View>
                           <View style={{flexDirection:'row',backgroundColor:'#190B20',flex:.3,alignItems:'center',justifyContent:'center',}}>
-                            <Text style={{fontSize:hp('1.4')}}>90MB</Text>
+                            <Text style={{fontSize:hp('1.4'),color:Colors['dark'].text}}>90MB</Text>
                           </View>
                       </View>
                       
                 </View>
             </View>
-            <Text style={{fontSize:hp('2.5'),fontWeight:'bold',marginVertical:10}}>Storage Details</Text>
+            <Text style={{fontSize:hp('2.5'),fontWeight:'bold',marginVertical:10,color:Colors['dark'].text}}>Storage Details</Text>
             <View style={{backgroundColor:'#322A3D',flexDirection:'row',flex:1,height:hp('20'),padding:10,marginBottom:40,borderRadius:10}}>
                 <View style={{flex:.45}}>
 
@@ -218,21 +218,30 @@ export default function Dashboard({ navigation }) {
                 <View style={{flex:.55,justifyContent:'center'}}>
                       <View style={{flexDirection:'row',marginVertical:5}}>
                           <View style={{borderRadius:50,height:hp('1.5'),width:wp('3'),backgroundColor:'#814697',alignSelf:'center'}}></View>
-                          <Text style={{fontSize:hp('1.8'),marginLeft:10}}>Document Files 1.3 GB</Text>
+                          <Text style={{fontSize:hp('1.8'),marginLeft:10,color:Colors['dark'].text}}>Document Files 1.3 GB</Text>
                       </View>
                       <View style={{flexDirection:'row',marginVertical:5,}}>
                           <View style={{borderRadius:50,height:hp('1.5'),width:wp('3'),backgroundColor:'#C75089',alignSelf:'center'}}></View>
-                          <Text style={{fontSize:hp('1.8'),marginLeft:10}}>Media Files 2.3 GB</Text>
+                          <Text style={{fontSize:hp('1.8'),marginLeft:10,color:Colors['dark'].text}}>Media Files 2.3 GB</Text>
                       </View>
                       <View style={{flexDirection:'row',marginVertical:5,}}>
                           <View style={{borderRadius:50,height:hp('1.5'),width:wp('3'),backgroundColor:'#117DA9',alignSelf:'center'}}></View>
-                          <Text style={{fontSize:hp('1.8'),marginLeft:10}}>Other Files 1.0 GB</Text>
+                          <Text style={{fontSize:hp('1.8'),marginLeft:10,color:Colors['dark'].text}}>Other Files 1.0 GB</Text>
                       </View>
                       <View style={{flexDirection:'row',marginVertical:5}}>
                           <View style={{borderRadius:50,height:hp('1.5'),width:wp('3'),backgroundColor:'#1B9D76',alignSelf:'center'}}></View>
-                          <Text style={{fontSize:hp('1.8'),marginLeft:10}}>Unknown Files 3.3 GB</Text>
+                          <Text style={{fontSize:hp('1.8'),marginLeft:10,color:Colors['dark'].text}}>Unknown Files 3.3 GB</Text>
                       </View>
+                      <TouchableOpacity style={{position:'absolute',backgroundColor:'#824597',height:hp('8'),width:wp('17'),alignItem:'center',justifyContent:'center',borderRadius:50,bottom:-50,zIndex:1000,elevation:1000}}>
+                        <Icon
+                          name='upload'
+                          type='feather'
+                          size={25}
+                          color='white'
+                        />
+                      </TouchableOpacity>
                 </View>
+                
             </View>
         </View>
     </ScrollView>

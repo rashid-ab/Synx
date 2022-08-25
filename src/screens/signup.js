@@ -40,7 +40,8 @@ export default function Signup({ navigation }) {
         "password": password.value
       })
         .then(function (response) {
-          navigation.navigate('login')
+          console.log('asdasd')
+          navigation.navigate('Login')
           setLoader(false)
         })
         .catch(function (error) {

@@ -6140,7 +6140,12 @@
     "prop-types" "^15.7.2"
     "yargs" "^16.1.1"
 
-"react-native@*", "react-native@^0.0.0-0 || 0.60 - 0.69 || 1000.0.0", "react-native@>=0.35", "react-native@>=0.42.0", "react-native@>=0.58", "react-native@>=0.59", "react-native@0.69.3":
+"react-native-vitals@^2.0.1":
+  "integrity" "sha512-cEI/HZU9MOmP3EtNlhVuHMcwVFHlGgjG9VS7z3IgA8/z0iNw7s6hu9jPyuEN+b72H2zqZacMe97KO9BM2hCRmQ=="
+  "resolved" "https://registry.npmjs.org/react-native-vitals/-/react-native-vitals-2.0.1.tgz"
+  "version" "2.0.1"
+
+"react-native@*", "react-native@^0.0.0-0 || 0.60 - 0.69 || 1000.0.0", "react-native@>=0.27", "react-native@>=0.35", "react-native@>=0.42.0", "react-native@>=0.58", "react-native@>=0.59", "react-native@0.69.3":
   "integrity" "sha512-SyGkcoEUa/BkO+wKVnv4OsnLSNfUM5zLNXS3iT/3eXjKX91/FKBH/nfR9BE1c60X5LQe/P5QYqr6WPX3TRSQkA=="
   "resolved" "https://registry.npmjs.org/react-native/-/react-native-0.69.3.tgz"
   "version" "0.69.3"

@@ -40,9 +40,13 @@ export default function Signup({ navigation }) {
         "password": password.value
       })
         .then(function (response) {
-          console.log('asdasd')
-          navigation.navigate('Login')
           setLoader(false)
+          if(response.data.status_type=='success'){
+            navigation.navigate('Login')
+          }
+          else{
+            AlertMessage('Error',response.data.message,'red')
+          }
         })
         .catch(function (error) {
           AlertMessage('Error',error.message,'red')

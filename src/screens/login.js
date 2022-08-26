@@ -8,6 +8,7 @@ import { Checkbox } from 'react-native-paper';
 import Colors from '../components/colors'
 import URL from '../components/url'
 import axios from 'axios'
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import {AlertMessage} from '../components/alert'
 import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 export default function LoginScreen({ navigation }) {
@@ -39,9 +40,15 @@ export default function LoginScreen({ navigation }) {
         "email": emails,
         "password": passwords
     })
-      .then(function (response) {
+      .then(async function (response) {
         console.log(response.data);
         setLoader(false)
+        if(response.data.status_type=='success'){
+          await AsyncStorage.setItem('token', response.data.payload.accessToken)
+        }
+        else{
+          AlertMessage('Error',response.data.message,'red')
+        }
       })
       .catch(function (error) {
         AlertMessage('Error',error.message,'red')

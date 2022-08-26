@@ -3,38 +3,12 @@ import { TouchableOpacity, StyleSheet, View,Text,Image,TextInput,KeyboardAvoidin
 import {Icon,LinearProgress}  from 'react-native-elements'
 import Colors from '../components/colors'
 import SwitchToggle from "react-native-switch-toggle";
-import Vitals from 'react-native-vitals';
+import * as Progress from 'react-native-progress';
 import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 export default function Dashboard({ navigation }) {
-
+  const [data,setData]=React.useState([ {value:50}, {value:80}, {value:90}, {value:70} ])
   useEffect(() => {
-    Vitals.getMemory().then(memory => {
-      var {
-        appUsed,
-        systemTotal,
-        systemFree,
-        systemUsed
-      } = memory;
-    });
     
-    Vitals.getStorage().then(storage => {
-      var {
-        total,
-        free,
-        used
-      } = storage;
-    });
-    
-    Vitals.addLowMemoryListener(memory => {
-      console.log('Low memory warning triggered');
-      var {
-        appUsed,
-        systemTotal,
-        systemFree,
-        systemUsed
-      } = memory;
-    })
-    console.log('Vitals',Vitals)
   });
  
   return (
@@ -212,8 +186,8 @@ export default function Dashboard({ navigation }) {
             </View>
             <Text style={{fontSize:hp('2.5'),fontWeight:'bold',marginVertical:10,color:Colors['dark'].text}}>Storage Details</Text>
             <View style={{backgroundColor:'#322A3D',flexDirection:'row',flex:1,height:hp('20'),padding:10,marginBottom:40,borderRadius:10}}>
-                <View style={{flex:.45}}>
-
+                <View style={{flex:.45,alignItems:'center',justifyContent:'center'}}>
+                  <Progress.Circle size={100} progress={0.7}  color='#814697' unfilledColor='#814697' borderColor='#814697' showsText={true} indeterminate={false} />
                 </View>
                 <View style={{flex:.55,justifyContent:'center'}}>
                       <View style={{flexDirection:'row',marginVertical:5}}>
@@ -232,14 +206,6 @@ export default function Dashboard({ navigation }) {
                           <View style={{borderRadius:50,height:hp('1.5'),width:wp('3'),backgroundColor:'#1B9D76',alignSelf:'center'}}></View>
                           <Text style={{fontSize:hp('1.8'),marginLeft:10,color:Colors['dark'].text}}>Unknown Files 3.3 GB</Text>
                       </View>
-                      <TouchableOpacity style={{position:'absolute',backgroundColor:'#824597',height:hp('8'),width:wp('17'),alignItem:'center',justifyContent:'center',borderRadius:50,bottom:-50,zIndex:1000,elevation:1000}}>
-                        <Icon
-                          name='upload'
-                          type='feather'
-                          size={25}
-                          color='white'
-                        />
-                      </TouchableOpacity>
                 </View>
                 
             </View>
